@@ -1,7 +1,19 @@
+
 import React, { useState } from "react";
 import { books } from "../data";
 
 export default function Books() {
+
+  const [expandedBooks, setExpandedBooks] = useState({});
+
+  // Function to toggle a specific book's expanded state
+  const handleToggle = (title) => {
+    setExpandedBooks((prevState) => ({
+      ...prevState,
+      [title]: !prevState[title],
+    }));
+  };
+
   return (
     <section id="books">
       <div className="container px-5 py-20 mx-auto text-center">
@@ -13,8 +25,7 @@ export default function Books() {
         </h1>
         <div className="flex flex-wrap -m-4">
           {books.map((book) => {
-            const [isExpanded, setIsExpanded] = useState(false);
-            const handleToggle = () => setIsExpanded (!isExpanded);
+            const isExpanded = expandedBooks[book.title] || false;
             
             return (
             <div className="p-4 md:w-1/2 w-full" key={book.title}>
@@ -36,7 +47,7 @@ export default function Books() {
                     {isExpanded ? book.synopsis : `${book.synopsis.substring(0, 286)}...`}
                   </span>
                   <div className="mt-2">
-                  <button className="text-blue-500 mt-2" onClick={handleToggle}>
+                  <button className="text-blue-500 mt-2" onClick={() => handleToggle(book.title)}>
                     {isExpanded ? "Read less" : "Read more"}
                   </button>
                   </div>
