@@ -9,11 +9,10 @@
 //   },
 // }
 
-const TerserPlugin = require('terser-webpack-plugin');
-
 module.exports = {
   style: {
     postcss: {
+      mode: "extends", // Ensure this is set to "extends"
       plugins: [
         require('tailwindcss'),
         require('autoprefixer'),
@@ -22,35 +21,7 @@ module.exports = {
   },
   webpack: {
     configure: (webpackConfig) => {
-      // Babel loader for modern JavaScript (to fix the minification issue)
-      webpackConfig.module.rules.push({
-        test: /\.js$/,
-        exclude: /node_modules\/(?!(@remix-run\/router))/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
-        },
-      });
-
-      // Terser for minification (optional, in case react-scripts minification fails)
-      if (webpackConfig.optimization && webpackConfig.optimization.minimizer) {
-        webpackConfig.optimization.minimizer = [
-          new TerserPlugin({
-            terserOptions: {
-              ecma: 2020, // Adjust to the ECMAScript version you're targeting
-              parse: {},
-              compress: {},
-              mangle: true,
-              output: {
-                comments: false,
-              },
-            },
-          }),
-        ];
-      }
-
+      // Optional custom webpack configurations
       return webpackConfig;
     },
   },
