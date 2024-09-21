@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { books } from "../data";
 
 export default function Books() {
   return (
     <section id="books">
-      <div className="container px-5 py-10 mx-auto text-center">
+      <div className="container px-5 py-20 mx-auto text-center">
         <span role="img" aria-label="book" className="text-5xl">
           📖
         </span>
@@ -12,29 +12,39 @@ export default function Books() {
           Books
         </h1>
         <div className="flex flex-wrap -m-4">
-          {books.map((book) => (
-            <div className="p-4 md:w-1/2 w-full">
-              <div className="h-full bg-gray-800 bg-opacity-40 p-8 rounded flex items-center">
-                <div className="w-1/2">
+          {books.map((book) => {
+            const [isExpanded, setIsExpanded] = useState(false);
+            const handleToggle = () => setIsExpanded (!isExpanded);
+            
+            return (
+            <div className="p-4 md:w-1/2 w-full" key={book.title}>
+              <div className="h-full bg-gray-800 bg-opacity-40 p-4 rounded flex flex-col">
+                <div className="flex justify-center mb-4">
                 <a href={book.link} target="_blank" rel="noopener noreferrer">
                   <img
-                    alt="cover of Scion of War book written by Chris Jones"
+                    alt={`cover of ${book.title}`}
                     src={book.image}
-                    className="w-full object-cover object-center"
+                    className="w-56 h-84 object-cover object-center"
                   />
                   </a>
                 </div>
-                <div className="w-1/2 pl-4">
+                <div className="text-center">
                 <a href={book.link} target="_blank" rel="noopener noreferrer">
                   <p className="leading-relaxed mb-6 text-xl text-blue-500 font-bold underline">{book.title}</p>
                   </a>
                   <span className="title-font font-medium text-white">
-                    {book.synopsis}
+                    {isExpanded ? book.synopsis : `${book.synopsis.substring(0, 286)}...`}
                   </span>
+                  <div className="mt-2">
+                  <button className="text-blue-500 mt-2" onClick={handleToggle}>
+                    {isExpanded ? "Read less" : "Read more"}
+                  </button>
+                  </div>
                 </div>
               </div>
             </div>
-          ))}
+          );
+        })}
         </div>
       </div>
     </section>
