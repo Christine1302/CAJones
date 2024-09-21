@@ -30,7 +30,7 @@ export default function About() {
           </div>
         </div>
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-          <img src="./Unruly.jpg" alt="C.A. Jones"/>
+          <img src="./CAJones1.jpg" alt="C.A. Jones playing drums"/>
         </div>
       </div>
     </section>
