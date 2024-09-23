@@ -1,7 +1,9 @@
 [build]
   command = "CI= npm run build"
+  node_version = "16.x"
+
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200
+  status = 200n
