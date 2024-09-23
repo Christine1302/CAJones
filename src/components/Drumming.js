@@ -1,8 +1,25 @@
 import { BadgeCheckIcon } from "@heroicons/react/solid";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { drumming } from "../data";
 
 export default function Drumming() {
+  const [content, setContent] = useState('');
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const response = await fetch('https://www.thevigarcadia.com/tour');
+        const text = await response.text();
+        setContent(text);
+      } catch (error) {
+        console.error("Error fetching content:", error);
+      }
+    };
+
+    fetchContent();
+  }, []);
+
+ 
   return (
     <section id="drumming">
       <div className="container px-5 py-10 mx-auto">
@@ -43,9 +60,43 @@ export default function Drumming() {
           ))}
         </div>
         <div className="m:text-2xl text-xl font-s title-font text-white mb-4 flex justify-center underline">
-          <a href ="https://www.thevigarcadia.com/tour" target="_blank" rel="noopener noreferrer">SEE UPCOMING SHOWS</a>
+          <a href ="https://www.thevigarcadia.com/tour" target="_blank" rel="noopener noreferrer">UPCOMING SHOWS WITH THE VIG ARCADIA</a>
         </div>
+       {/* Iframe and overlay */}
+       <div
+          className="relative w-full"
+           style={{
+            position: "relative",
+             width: "80%",
+            margin: "0 auto",
+            height: "400px",
+             border: "2px solid #ccc",
+             borderRadius: "8px",
+             overflow: "hidden", // Ensure the overlay doesn't overflow
+          }}
+        >
+          <iframe
+            id="theVig"
+            title="VigTour"
+            src="https://www.thevigarcadia.com/tour"
+            className="absolute top-0 left-0 w-full h-full"
+            style={{ border: "none", maxHeight: "400px" }} // Ensure iframe is above the overlay
+          />
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100vw",
+              height: "100vh",
+              backgroundColor: "rgba(0, 0, 0, 0.3)", // Semi-transparent black overlay
+              zIndex: 2, // Ensure overlay is above the iframe
+              pointerEvents: "none", // Allow interaction with iframe through the overlay
+            }}
+          />
+        </div>
+
       </div>
-          </section>
+    </section>
   )
 }
