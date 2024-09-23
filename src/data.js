@@ -61,3 +61,71 @@ export const drumming = [
   {title: "Dani Darling"},
   {href: "https://open.spotify.com/album/3a2njzQ9eH8liRlZgnANhy", title: "Party Like AFC"},
 ];
+
+export const gallery =[
+  {band: "The Vig Arcadia",
+    video: "./Vig1.mp4",
+    month: "September",
+    year: "2024"
+    },
+  {band: "The Vig Arcadia",
+    video: "./Vig3.mp4",
+    month: "September",
+    year: "2024"
+    },
+  {band: "The Vig Arcadia",
+    video: "./Vig4.mp4",
+    month: "September",
+    year: "2024"
+  },
+  {band: "Party Like AFC",
+  video: "./AFC.mp4",
+  month: "November",
+  year: "2023"
+  },
+  {band: "Party Like AFC",
+    video: "./AFC5.mp4",
+    month: "November",
+    year: "2023"
+  },
+  {band: "Party Like AFC",
+    video: "./AFC3.mp4",
+    month: "November",
+    year: "2023"
+  },
+  {band: "Party Like AFC",
+    video: "./AFC4.mp4",
+    month: "November",
+    year: "2023"
+  },
+  {band: "The Vig Arcadia",
+    video: "./Vig5.mp4",
+    month: "November",
+    year: "2023"
+  },
+  {band: "The Vig Arcadia",
+    video: "./Vig6.mp4",
+    month: "July",
+    year: "2023"
+  },
+  
+  {band: "The Vig Arcadia",
+    video: "./Vig7.mp4",
+    month: "July",
+    year: "2023"
+  },
+  
+  {band: "The Vig Arcadia",
+    video: "./Vig8.mp4",
+    month: "July",
+    year: "2023"
+  },
+  
+  {band: "The Vig Arcadia",
+    video: "./Vig9.mp4",
+    month: "July",
+    year: "2023"
+  },
+  
+
+]
