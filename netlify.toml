@@ -3,6 +3,10 @@
   publish = "build"
   node_version = "16"
 
+[build.environment]
+  NODE_OPTIONS = "--openssl-legacy-provider"
+
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
