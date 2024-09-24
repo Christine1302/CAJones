@@ -1,28 +1,11 @@
 import { BadgeCheckIcon } from "@heroicons/react/solid";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { drumming } from "../data";
 
 export default function Drumming() {
-  const [content, setContent] = useState('');
-
-  useEffect(() => {
-    const fetchContent = async () => {
-      try {
-        const response = await fetch('https://www.thevigarcadia.com/tour');
-        const text = await response.text();
-        setContent(text);
-      } catch (error) {
-        console.error("Error fetching content:", error);
-      }
-    };
-
-    fetchContent();
-  }, []);
-
- 
   return (
     <section id="drumming">
-      <div className="container px-5 py-10 mx-auto">
+      <div className="container px-5 py-20 mx-auto">
         <div className="text-center mb-20">
         <span role="img" aria-label="drum" className="text-5xl">
               🥁
@@ -60,10 +43,9 @@ export default function Drumming() {
           ))}
         </div>
         <div className="m:text-2xl text-xl font-s title-font text-white mb-4 flex justify-center underline">
-          <a href ="https://www.thevigarcadia.com/tour" target="_blank" rel="noopener noreferrer">UPCOMING SHOWS WITH THE VIG ARCADIA</a>
-        </div>
-       {/* Iframe and overlay */}
-       <div
+          <a href = "http://thevigarcadia.com/tour"><h1>Upcoming Shows with The Vig Arcadia</h1></a>
+          </div>
+          <div
           className="relative w-full"
            style={{
             position: "relative",
@@ -95,8 +77,7 @@ export default function Drumming() {
             }}
           />
         </div>
-
       </div>
-    </section>
+          </section>
   )
 }
