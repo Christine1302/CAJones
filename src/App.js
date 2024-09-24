@@ -9,13 +9,11 @@ import Books from "./components/Books";
 import Gallery from "./components/Gallery";
 import { scroller } from "react-scroll";
 
-function ScrollToTop() {
-  const { hash} = useLocation();
+function ScrollToHash() {
+  const { hash, pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0,0);
-    
-    if (hash) {
+    if (hash && pathname === "/") {
       const section = hash.replace("#", "");
       scroller.scrollTo(section, {
         duration: 500,
@@ -23,7 +21,7 @@ function ScrollToTop() {
         smooth: true,
       });
     }
-  }, [hash]);
+  }, [hash, pathname]);
   
   return null;
 }
@@ -31,7 +29,7 @@ function ScrollToTop() {
 export default function App() {
   return (
     <Router>
-      <ScrollToTop />
+      <ScrollToHash />
     <main className="text-gray-400 bg-gray-900 body-font">
       <Navbar />
       <Routes>
