@@ -1,5 +1,7 @@
 [build]
   command = "CI= npm run build"
+  publish = "build"
+  node_version = "16"
 
 [[redirects]]
   from = "/*"
