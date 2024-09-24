@@ -44,7 +44,7 @@ export default function App() {
         } />
       <Route path = "/gallery" element={<Gallery />} />
       </Routes>
-      <p className="mt-4 text-sm text-gray-500">Website created by Christine Jones, using FreeCodeCamp tutorial as reference</p>
+      <p className="mt-4 text-sm text-gray-500">Website created by Christine Jones, using FreeCodeCamp tutorial as reference. Last updated September, 2024</p>
     </main>
     </Router>
   );
